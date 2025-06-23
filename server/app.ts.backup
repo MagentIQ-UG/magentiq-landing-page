@@ -1,8 +1,9 @@
-import express = require('express');
-import cors = require('cors');
-import helmet = require('helmet');
-import path = require('path');
-import * as nodemailer from 'nodemailer';
+import express from 'express';
+import cors from 'cors';
+import helmet from 'helmet';
+import path from 'path';
+import nodemailer from 'nodemailer';
+import type { Request, Response, NextFunction } from 'express';
 
 // Types for the contact form data
 interface ContactFormData {
@@ -207,7 +208,7 @@ function createEmailTemplate(data: ContactFormData): string {
 }
 
 // Contact form API endpoint
-app.post('/api/contact', async (req: express.Request, res: express.Response) => {
+app.post('/api/contact', async (req: Request, res: Response) => {
   try {
     // Log the request for debugging
     console.log('Contact form submission received:', {

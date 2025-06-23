@@ -1,5 +1,9 @@
 # 🚀 Azure App Service Deployment Guide
 
+**Complete deployment guide for MagentIQ AI Labs landing page to Azure App Service with custom domain.**
+
+**Prerequisites**: See [`README.md`](./README.md) for project overview and [`ENVIRONMENT.md`](./ENVIRONMENT.md) for environment setup.
+
 ## MagentIQ AI Labs Landing Page - Azure Deployment
 
 This guide will help you deploy the MagentIQ landing page to Azure App Service with a full-stack setup (React frontend + Express.js backend).

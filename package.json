@@ -6,10 +6,10 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
-    "build:server": "tsc server/app.ts --outDir dist-server --esModuleInterop --target es2020 --module commonjs --moduleResolution node",
+    "build:server": "echo 'Using existing server/app.cjs - no compilation needed'",
     "build:all": "npm run build && npm run build:server",
-    "start": "node server/app.js",
-    "start:dev": "concurrently \"npm run dev\" \"nodemon server/app.ts\"",
+    "start": "node server/app.cjs",
+    "start:dev": "concurrently \"npm run dev\" \"nodemon server/app.cjs\"",
     "lint": "eslint .",
     "preview": "vite preview"
   },
@@ -22,7 +22,7 @@
     "@types/nodemailer": "^6.4.17",
     "@vercel/node": "^5.3.0",
     "cors": "^2.8.5",
-    "express": "^5.1.0",
+    "express": "^4.21.2",
     "helmet": "^8.1.0",
     "nodemailer": "^7.0.3",
     "react": "^19.1.0",
