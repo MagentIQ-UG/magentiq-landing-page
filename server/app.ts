@@ -1,0 +1,363 @@
+import express = require('express');
+import cors = require('cors');
+import helmet = require('helmet');
+import path = require('path');
+import * as nodemailer from 'nodemailer';
+
+// Types for the contact form data
+interface ContactFormData {
+  firstName: string;
+  lastName: string;
+  email: string;
+  company: string;
+  phone?: string;
+  inquiryType: string;
+  message: string;
+  submissionDate: string;
+  userAgent: string;
+  referrer: string;
+}
+
+// Initialize Express app
+const app = express();
+const PORT = process.env.PORT || 8080;
+
+// Security middleware
+app.use(helmet({
+  contentSecurityPolicy: {
+    directives: {
+      defaultSrc: ["'self'"],
+      styleSrc: ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com"],
+      fontSrc: ["'self'", "https://fonts.gstatic.com"],
+      imgSrc: ["'self'", "data:", "https:"],
+      scriptSrc: ["'self'"],
+    },
+  },
+}));
+
+// CORS configuration
+app.use(cors({
+  origin: process.env.NODE_ENV === 'production' 
+    ? [
+        'https://magentiqlabs.com',
+        'https://www.magentiqlabs.com',
+        'https://magentiq-landing.azurewebsites.net' // Your Azure App Service URL
+      ]
+    : ['http://localhost:5173', 'http://localhost:5174', 'http://localhost:3000'],
+  credentials: true,
+  methods: ['GET', 'POST', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+}));
+
+// Body parsing middleware
+app.use(express.json({ limit: '10mb' }));
+app.use(express.urlencoded({ extended: true, limit: '10mb' }));
+
+// Serve static files (React build)
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, '../dist')));
+}
+
+// Health check endpoint
+app.get('/api/health', (req, res) => {
+  res.json({ 
+    status: 'healthy', 
+    timestamp: new Date().toISOString(),
+    environment: process.env.NODE_ENV || 'development'
+  });
+});
+
+// Validation function
+function validateContactForm(data: any): data is ContactFormData {
+  const required = ['firstName', 'lastName', 'email', 'company', 'inquiryType', 'message'];
+  
+  for (const field of required) {
+    if (!data[field] || typeof data[field] !== 'string' || data[field].trim().length === 0) {
+      return false;
+    }
+  }
+
+  // Email validation
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(data.email)) {
+    return false;
+  }
+
+  // Message length validation
+  if (data.message.trim().length < 10) {
+    return false;
+  }
+
+  return true;
+}
+
+// Email service configuration
+function createEmailTransporter() {
+  const emailService = process.env.EMAIL_SERVICE || 'gmail';
+  const emailUser = process.env.EMAIL_USER;
+  const emailPassword = process.env.EMAIL_PASSWORD;
+
+  if (!emailUser || !emailPassword) {
+    throw new Error('Email configuration missing. Please set EMAIL_USER and EMAIL_PASSWORD environment variables.');
+  }
+
+  return nodemailer.createTransport({
+    service: emailService,
+    auth: {
+      user: emailUser,
+      pass: emailPassword,
+    },
+  });
+}
+
+// HTML email template
+function createEmailTemplate(data: ContactFormData): string {
+  const submissionDate = new Date(data.submissionDate).toLocaleString('en-UG', {
+    timeZone: 'Africa/Kampala',
+    dateStyle: 'full',
+    timeStyle: 'short',
+  });
+
+  return `
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <meta charset="utf-8">
+      <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 800px; margin: 0 auto; }
+        .header { background: #0056b3; color: white; padding: 20px; text-align: center; border-radius: 8px 8px 0 0; }
+        .content { padding: 20px; background: white; border: 1px solid #e0e0e0; }
+        .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin: 20px 0; }
+        .info-item { background: #f8f9fa; padding: 15px; border-radius: 8px; border-left: 4px solid #0056b3; }
+        .info-label { font-weight: bold; color: #0056b3; margin-bottom: 5px; }
+        .info-value { color: #333; }
+        .message-box { background: #f8f9fa; padding: 20px; border-radius: 8px; margin: 20px 0; border-left: 4px solid #28a745; }
+        .next-steps { background: #e3f2fd; padding: 20px; border-radius: 8px; margin: 20px 0; }
+        .footer { background: #f8f9fa; padding: 15px; text-align: center; font-size: 12px; color: #666; border-radius: 0 0 8px 8px; }
+        .azure-badge { background: #0078d4; color: white; padding: 4px 8px; border-radius: 4px; font-size: 10px; }
+      </style>
+    </head>
+    <body>
+      <div class="header">
+        <h1>🚀 New Contact Form Submission</h1>
+        <p>MagentIQ AI Labs Landing Page</p>
+        <span class="azure-badge">Azure App Service</span>
+      </div>
+      
+      <div class="content">
+        <p><strong>Submission Date:</strong> ${submissionDate}</p>
+        
+        <div class="info-grid">
+          <div class="info-item">
+            <div class="info-label">👤 Contact Person</div>
+            <div class="info-value">${data.firstName} ${data.lastName}</div>
+          </div>
+          
+          <div class="info-item">
+            <div class="info-label">🏢 Company</div>
+            <div class="info-value">${data.company}</div>
+          </div>
+          
+          <div class="info-item">
+            <div class="info-label">📧 Email</div>
+            <div class="info-value"><a href="mailto:${data.email}" style="color: #0056b3;">${data.email}</a></div>
+          </div>
+          
+          <div class="info-item">
+            <div class="info-label">📱 Phone</div>
+            <div class="info-value">${data.phone || 'Not provided'}</div>
+          </div>
+          
+          <div class="info-item">
+            <div class="info-label">🎯 Inquiry Type</div>
+            <div class="info-value"><strong>${data.inquiryType}</strong></div>
+          </div>
+          
+          <div class="info-item">
+            <div class="info-label">🌐 Source</div>
+            <div class="info-value">${data.referrer}</div>
+          </div>
+        </div>
+        
+        <div class="message-box">
+          <div class="info-label">💬 Message</div>
+          <div style="margin-top: 10px; white-space: pre-wrap; color: #333;">${data.message}</div>
+        </div>
+        
+        <div class="next-steps">
+          <h3 style="color: #0056b3; margin-top: 0;">🎯 Recommended Next Steps:</h3>
+          <ul style="margin-bottom: 0;">
+            <li><strong>Respond within 24 hours</strong> (as promised on the website)</li>
+            <li><strong>Schedule consultation</strong> based on inquiry type: ${data.inquiryType}</li>
+            <li><strong>Send Carsa Lens demo</strong> if relevant to their needs</li>
+            <li><strong>Add to CRM</strong> for lead tracking and follow-up</li>
+            <li><strong>Consider priority level</strong> based on company size and inquiry type</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="footer">
+        <p>This email was automatically generated from the MagentIQ AI Labs contact form.</p>
+        <p>Server: Azure App Service | Timestamp: ${data.submissionDate}</p>
+        <p>User Agent: ${data.userAgent.substring(0, 100)}${data.userAgent.length > 100 ? '...' : ''}</p>
+      </div>
+    </body>
+    </html>
+  `;
+}
+
+// Contact form API endpoint
+app.post('/api/contact', async (req: express.Request, res: express.Response) => {
+  try {
+    // Log the request for debugging
+    console.log('Contact form submission received:', {
+      timestamp: new Date().toISOString(),
+      ip: req.ip,
+      userAgent: req.get('User-Agent'),
+      body: { ...req.body, message: '[REDACTED FOR LOGS]' }
+    });
+
+    // Validate request body
+    if (!validateContactForm(req.body)) {
+      return res.status(400).json({
+        success: false,
+        message: 'Invalid form data. Please check all required fields and try again.',
+      });
+    }
+
+    const formData: ContactFormData = req.body;
+
+    // Create email transporter
+    const transporter = createEmailTransporter();
+
+    // Email configuration
+    const emailOptions = {
+      from: `"MagentIQ Contact Form" <${process.env.EMAIL_USER}>`,
+      to: process.env.CONTACT_EMAIL || process.env.EMAIL_USER,
+      replyTo: formData.email,
+      subject: `🚀 New ${formData.inquiryType} Inquiry - ${formData.company}`,
+      html: createEmailTemplate(formData),
+    };
+
+    // Send email
+    const emailResult = await transporter.sendMail(emailOptions);
+    console.log('Email sent successfully:', emailResult.messageId);
+
+    // Optionally send auto-reply to user
+    if (process.env.SEND_AUTO_REPLY === 'true') {
+      const autoReplyOptions = {
+        from: `"MagentIQ AI Labs" <${process.env.EMAIL_USER}>`,
+        to: formData.email,
+        subject: 'Thank you for contacting MagentIQ AI Labs',
+        html: `
+          <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden;">
+            <div style="background: #0056b3; color: white; padding: 20px; text-align: center;">
+              <h1 style="margin: 0;">Thank You!</h1>
+              <p style="margin: 10px 0 0 0;">Your inquiry has been received</p>
+            </div>
+            <div style="padding: 20px;">
+              <p>Dear ${formData.firstName},</p>
+              <p>Thank you for your interest in MagentIQ AI Labs. We've received your inquiry regarding <strong>${formData.inquiryType}</strong> and will get back to you within 24 hours.</p>
+              <p>Our Kampala-based AI experts will review your requirements and provide you with a personalized consultation to discuss how our solutions can help transform your business.</p>
+              <div style="background: #e3f2fd; padding: 15px; border-radius: 6px; margin: 20px 0;">
+                <h3 style="color: #0056b3; margin-top: 0;">What happens next?</h3>
+                <ul style="margin-bottom: 0;">
+                  <li>We'll review your inquiry within 2 hours</li>
+                  <li>Our AI expert will contact you within 24 hours</li>
+                  <li>We'll schedule a personalized consultation</li>
+                  <li>You'll receive a tailored solution proposal</li>
+                </ul>
+              </div>
+              <p>If you have any urgent questions, feel free to contact us directly at <a href="tel:+256750990718">+256 750 990 718</a>.</p>
+              <p>Best regards,<br><strong>The MagentIQ Team</strong></p>
+            </div>
+            <div style="background: #f8f9fa; padding: 15px; text-align: center; font-size: 12px; color: #666;">
+              <p style="margin: 0;"><strong>MagentIQ AI Labs Ltd.</strong></p>
+              <p style="margin: 5px 0;">National ICT Innovation Hub, Plot 19-21 Port Bell Road, Kampala, Uganda</p>
+              <p style="margin: 5px 0;">Email: hello@magentiqlabs.com | Phone: +256 750 990 718</p>
+              <p style="margin: 5px 0 0 0;">
+                <a href="https://www.linkedin.com/company/magentiq-labs" style="color: #0056b3; text-decoration: none;">LinkedIn</a> | 
+                <a href="https://carsalens.com" style="color: #0056b3; text-decoration: none;">Carsa Lens</a>
+              </p>
+            </div>
+          </div>
+        `,
+      };
+
+      await transporter.sendMail(autoReplyOptions);
+      console.log('Auto-reply sent to:', formData.email);
+    }
+
+    // Success response
+    res.status(200).json({
+      success: true,
+      message: 'Contact form submitted successfully. We will get back to you within 24 hours.',
+      submissionId: emailResult.messageId,
+      timestamp: new Date().toISOString(),
+    });
+
+  } catch (error) {
+    console.error('Contact form error:', error);
+    
+    // Handle specific error types
+    let errorMessage = 'An unexpected error occurred. Please try again later.';
+    
+    if (error instanceof Error) {
+      if (error.message.includes('Email configuration')) {
+        errorMessage = 'Email service is temporarily unavailable. Please contact us directly at hello@magentiqlabs.com';
+      } else if (error.message.includes('Invalid login')) {
+        errorMessage = 'Email service authentication failed. Please contact us directly.';
+      } else if (error.message.includes('Network')) {
+        errorMessage = 'Network error occurred. Please check your connection and try again.';
+      }
+    }
+
+    res.status(500).json({
+      success: false,
+      message: errorMessage,
+      timestamp: new Date().toISOString(),
+    });
+  }
+});
+
+// Serve React app for all other routes (SPA routing)
+if (process.env.NODE_ENV === 'production') {
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../dist/index.html'));
+  });
+}
+
+// Error handling middleware
+app.use((err: any, req: express.Request, res: express.Response, next: express.NextFunction) => {
+  console.error('Unhandled error:', err);
+  if (!res.headersSent) {
+    res.status(500).json({
+      success: false,
+      message: 'Internal server error',
+      timestamp: new Date().toISOString(),
+    });
+  }
+  next();
+});
+
+// 404 handler for API routes
+app.use('/api/*', (req, res) => {
+  res.status(404).json({
+    success: false,
+    message: 'API endpoint not found',
+    timestamp: new Date().toISOString(),
+  });
+});
+
+// Start server
+app.listen(PORT, () => {
+  console.log(`🚀 MagentIQ Server running on port ${PORT}`);
+  console.log(`Environment: ${process.env.NODE_ENV || 'development'}`);
+  console.log(`Health check: http://localhost:${PORT}/api/health`);
+  
+  if (process.env.NODE_ENV === 'production') {
+    console.log('✅ Serving static React build files');
+  }
+});
+
+export default app; 

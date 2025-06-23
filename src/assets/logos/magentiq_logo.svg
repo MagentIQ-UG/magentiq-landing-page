@@ -1,0 +1,43 @@
+<svg viewBox="0 0 400 120" xmlns="http://www.w3.org/2000/svg" font-family="Inter, Arial, sans-serif">
+  <defs>
+    <!-- Individual gradients for each line -->
+    <linearGradient id="grad-upper-right" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0056b3"/>
+      <stop offset="100%" stop-color="#000000"/>
+    </linearGradient>
+    
+    <linearGradient id="grad-upper-left" x1="100%" y1="50%" x2="0%" y2="50%">
+      <stop offset="0%" stop-color="#0056b3"/>
+      <stop offset="100%" stop-color="#000000"/>
+    </linearGradient>
+    
+    <linearGradient id="grad-lower" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0056b3"/>
+      <stop offset="100%" stop-color="#000000"/>
+    </linearGradient>
+    
+    <style>
+      .text { font-size: 36px; font-weight: 700; fill: #1e1e1e; letter-spacing: -0.6px; }
+      .highlight { fill: #0056b3; }
+      .center { fill: #0056b3; }
+      .outer { fill: #0056b3; }
+    </style>
+  </defs>
+
+  <!-- Icon: Repositioned to be directly centered on the "M" -->
+  <g transform="translate(95, 65)">
+    <circle cx="0" cy="0" r="6" class="center"/>
+    <line x1="0" y1="0" x2="25" y2="-20" stroke="url(#grad-upper-right)" stroke-width="2" stroke-linecap="round"/>
+    <line x1="0" y1="0" x2="-25" y2="-10" stroke="url(#grad-upper-left)" stroke-width="2" stroke-linecap="round"/>
+    <line x1="0" y1="0" x2="10" y2="30" stroke="url(#grad-lower)" stroke-width="2" stroke-linecap="round"/>
+
+    <circle cx="25" cy="-20" r="3" class="outer"/>
+    <circle cx="-25" cy="-10" r="3" class="outer"/>
+    <circle cx="10" cy="30" r="3" class="outer"/>
+  </g>
+
+  <!-- Text layer (above the icon) -->
+  <g transform="translate(80, 70)">
+    <text x="0" y="0" class="text">Magent<tspan class="highlight">IQ</tspan></text>
+  </g>
+</svg>
