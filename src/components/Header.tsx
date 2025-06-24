@@ -21,7 +21,7 @@ const Header: React.FC = () => {
 
   return (
     <header className="fixed w-full top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-200">
-      <nav className="container-custom flex items-center justify-between h-20" aria-label="Global">
+      <nav className="container-custom flex items-center justify-between h-24" aria-label="Global">
         {/* Logo */}
         <div className="flex lg:flex-1">
           <a 
@@ -33,11 +33,11 @@ const Header: React.FC = () => {
             }}
           >
             <span className="sr-only">MagentIQ AI Labs</span>
-            <div className="h-10 w-auto flex items-center">
+            <div className="h-16 w-auto flex items-center">
               {/* SVG Logo inline for better control */}
               <svg 
                 viewBox="0 0 400 120" 
-                className="h-10 w-auto"
+                className="h-16 w-auto"
                 xmlns="http://www.w3.org/2000/svg" 
                 fontFamily="Inter, Arial, sans-serif"
               >
@@ -138,11 +138,11 @@ const Header: React.FC = () => {
                 }}
               >
                 <span className="sr-only">MagentIQ AI Labs</span>
-                <div className="h-8 w-auto flex items-center">
-                  {/* Mobile logo (smaller) */}
+                <div className="h-12 w-auto flex items-center">
+                  {/* Mobile logo (slightly larger) */}
                   <svg 
                     viewBox="0 0 400 120" 
-                    className="h-8 w-auto"
+                    className="h-12 w-auto"
                     xmlns="http://www.w3.org/2000/svg" 
                     fontFamily="Inter, Arial, sans-serif"
                   >
