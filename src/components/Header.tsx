@@ -20,8 +20,8 @@ const Header: React.FC = () => {
   };
 
   return (
-    <header className="fixed w-full top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-200">
-      <nav className="container-custom flex items-center justify-between h-24" aria-label="Global">
+    <header className="fixed w-full top-0 z-[999] bg-white/95 backdrop-blur-sm border-b border-gray-200">
+      <nav className="container-custom flex items-center justify-between h-12 lg:h-24" aria-label="Global">
         {/* Logo */}
         <div className="flex lg:flex-1">
           <a 
@@ -126,7 +126,7 @@ const Header: React.FC = () => {
           />
           
           {/* Mobile menu panel */}
-          <div className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+          <div className="fixed inset-y-0 right-0 z-[999] w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
             <div className="flex items-center justify-between">
               <a 
                 href="#" 
