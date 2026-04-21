@@ -16,7 +16,7 @@ const About: React.FC = () => {
             <p className="mb-4 text-sm font-semibold uppercase tracking-[0.18em] text-brand-blue">
               Company Focus
             </p>
-            <h2 className="text-4xl font-bold tracking-tight text-gray-950 md:text-5xl">
+            <h2 className="text-4xl font-bold tracking-tight text-brand-black md:text-5xl">
               Focused AI products for high-trust work.
             </h2>
           </div>
@@ -41,7 +41,7 @@ const About: React.FC = () => {
                   className="rounded-lg border border-gray-200 bg-gray-50 p-5"
                 >
                   <CheckCircleIcon className="mb-4 h-6 w-6 text-brand-blue" />
-                  <p className="text-sm font-semibold leading-6 text-gray-900">
+                  <p className="text-sm font-semibold leading-6 text-brand-gray">
                     {principle}
                   </p>
                 </div>

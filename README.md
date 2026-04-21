@@ -15,8 +15,9 @@ This site establishes the relationship between:
 - Law Lens Uganda as the inaugural product.
 - lawlens.io as the product domain.
 
-The current product focus is legal research automation, internal knowledge
-retrieval, contract risk monitoring, and compliance intelligence for Ugandan
+The current product focus is legal intelligence for institutions: legal
+research automation, internal knowledge retrieval, contract risk and renewal
+monitoring, SOP/compliance review, and regulatory change monitoring for Ugandan
 legal, regulatory, and institutional workflows.
 
 ## Stack

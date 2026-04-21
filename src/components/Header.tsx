@@ -62,7 +62,8 @@ const Header: React.FC = () => {
   };
 
   return (
-    <header className="fixed left-0 top-0 z-50 w-full border-b border-gray-200 bg-white/95 backdrop-blur-sm">
+    <header className="fixed left-0 top-0 z-50 w-full border-b border-gray-200 bg-white/95 shadow-sm backdrop-blur-sm">
+      <div className="h-1 w-full bg-brand-blue" />
       <nav className="container-custom flex h-20 items-center justify-between" aria-label="Global">
         <a
           href="#"
@@ -81,7 +82,7 @@ const Header: React.FC = () => {
             <button
               key={item.name}
               onClick={() => scrollToSection(item.href)}
-              className="rounded-md px-2 py-1 text-sm font-semibold text-gray-800 transition-colors duration-200 hover:text-brand-blue focus:outline-none focus:ring-2 focus:ring-brand-blue"
+              className="rounded-md px-2 py-1 text-sm font-semibold text-gray-700 transition-colors duration-200 hover:text-brand-blue focus:outline-none focus:ring-2 focus:ring-brand-blue"
             >
               {item.name}
             </button>
@@ -101,7 +102,7 @@ const Header: React.FC = () => {
 
         <button
           type="button"
-          className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700 hover:text-brand-blue focus:outline-none focus:ring-2 focus:ring-brand-blue lg:hidden"
+          className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-brand-gray hover:text-brand-blue focus:outline-none focus:ring-2 focus:ring-brand-blue lg:hidden"
           onClick={() => setMobileMenuOpen(true)}
         >
           <span className="sr-only">Open main menu</span>
@@ -112,11 +113,11 @@ const Header: React.FC = () => {
       {mobileMenuOpen && (
         <div className="lg:hidden">
           <div
-            className="fixed inset-0 z-40 bg-black/25"
+            className="fixed inset-0 z-40 bg-black/50"
             onClick={() => setMobileMenuOpen(false)}
           />
 
-          <div className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+          <div className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-200">
             <div className="flex items-center justify-between">
               <a
                 href="#"
@@ -132,7 +133,7 @@ const Header: React.FC = () => {
               </a>
               <button
                 type="button"
-                className="-m-2.5 rounded-md p-2.5 text-gray-700 hover:text-brand-blue focus:outline-none focus:ring-2 focus:ring-brand-blue"
+                className="-m-2.5 rounded-md p-2.5 text-brand-gray hover:text-brand-blue focus:outline-none focus:ring-2 focus:ring-brand-blue"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 <span className="sr-only">Close menu</span>
@@ -145,7 +146,7 @@ const Header: React.FC = () => {
                 <button
                   key={item.name}
                   onClick={() => scrollToSection(item.href)}
-                  className="-mx-3 block w-full rounded-lg px-3 py-3 text-left text-base font-semibold text-gray-900 transition-colors duration-200 hover:bg-gray-50 hover:text-brand-blue"
+                  className="-mx-3 block w-full rounded-lg px-3 py-3 text-left text-base font-semibold text-brand-gray transition-colors duration-200 hover:bg-primary-50 hover:text-brand-blue"
                 >
                   {item.name}
                 </button>

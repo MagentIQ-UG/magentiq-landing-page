@@ -18,13 +18,14 @@ const Hero: React.FC = () => {
           </div>
 
           <h1 className="text-5xl font-bold tracking-tight text-gray-950 md:text-7xl">
-            Magentiq AI Labs builds focused AI infrastructure for professional workflows.
+            Magentiq AI Labs Ltd. builds focused AI infrastructure for professional workflows.
           </h1>
 
           <p className="mx-auto mt-8 max-w-3xl text-xl leading-8 text-gray-700 md:text-2xl md:leading-10">
             We are the company behind Law Lens Uganda, a legal research
             automation and compliance monitoring platform helping institutions
-            search the law, retrieve internal knowledge, and stay ahead of risk.
+            search the law, unlock insight from internal records, and stay ahead
+            of compliance obligations and regulatory change.
           </p>
 
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
@@ -52,13 +53,14 @@ const Hero: React.FC = () => {
           </p>
         </div>
 
-        <div className="mx-auto mt-14 max-w-5xl rounded-lg border border-gray-200 bg-white shadow-xl">
+        <div className="mx-auto mt-14 max-w-5xl overflow-hidden rounded-lg border border-gray-200 bg-white shadow-xl">
+          <div className="h-1 w-full bg-brand-blue" />
           <div className="border-b border-gray-200 px-5 py-4">
             <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
               <div>
                 <p className="text-sm font-semibold text-gray-950">Law Lens Uganda</p>
                 <p className="text-xs text-gray-500">
-                  Legal research and compliance workspace
+                  Legal intelligence platform for institutions
                 </p>
               </div>
               <span className="rounded-full bg-blue-50 px-3 py-1 text-xs font-semibold text-brand-blue">
@@ -82,8 +84,8 @@ const Hero: React.FC = () => {
                   </p>
                   <p className="mt-2 text-sm leading-6 text-gray-600">
                     Responses are designed to connect professional users back to
-                    statutes, judgments, internal records, and compliance source
-                    material.
+                    exact section references, verified sources, internal records,
+                    and compliance source material.
                   </p>
                 </div>
                 <div className="rounded-lg border border-gray-200 p-4">
@@ -91,8 +93,8 @@ const Hero: React.FC = () => {
                     Monitoring for obligations and regulatory change
                   </p>
                   <p className="mt-2 text-sm leading-6 text-gray-600">
-                    Workflows support contract risk, renewal visibility, and
-                    compliance tracking for institutions.
+                    Workflows support contract renewals, regulatory directives,
+                    SOP adherence, alerts, and compliance tracking for institutions.
                   </p>
                 </div>
               </div>
