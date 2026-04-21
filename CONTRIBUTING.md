@@ -1,6 +1,6 @@
-# 🤝 Contributing to MagentIQ AI Labs Landing Page
+# Contributing to Magentiq AI Labs Ltd. Landing Page
 
-Thank you for your interest in contributing to the MagentIQ AI Labs landing page! This guide will help you get started with development and contribution.
+Thank you for your interest in contributing to the Magentiq AI Labs Ltd. landing page! This guide will help you get started with development and contribution.
 
 ---
 
@@ -69,7 +69,7 @@ src/
 ├── components/           # React components
 │   ├── Header.tsx       # Navigation
 │   ├── Hero.tsx        # Landing section
-│   ├── CarsaLens.tsx   # Product showcase
+│   ├── LawLensProduct.tsx   # Product showcase
 │   ├── Solutions.tsx   # AI capabilities
 │   ├── WhyChooseMagentiq.tsx  # Advantages
 │   ├── Contact.tsx     # Contact form
@@ -269,7 +269,7 @@ git push origin feature/your-feature-name
 - **Major architecture** changes without approval
 - **Dependencies** additions without justification
 - **Brand assets** modifications (logo, colors) without approval
-- **Business content** changes without MagentIQ team approval
+- **Business content** changes without Magentiq AI Labs Ltd. team approval
 - **Security-related** code without review
 
 ### **⚠️ Requires Discussion First**
@@ -284,7 +284,7 @@ git push origin feature/your-feature-name
 ## 📞 **Getting Help**
 
 ### **Communication**
-- **Email**: hello@magentiqlabs.com
+- **Email**: jothamw@magentiqlabs.com
 - **GitHub Issues**: For bugs and feature requests
 - **GitHub Discussions**: For questions and ideas
 
@@ -327,7 +327,7 @@ All contributors will be recognized in:
 - **GitHub**: Contributor graph
 
 ### **Significant Contributions**
-Major contributors may be invited to join the MagentIQ development team.
+Major contributors may be invited to join the Magentiq AI Labs Ltd. development team.
 
 ---
 
@@ -337,6 +337,6 @@ By contributing, you agree that your contributions will be licensed under the sa
 
 ---
 
-**Thank you for contributing to MagentIQ AI Labs! 🚀**
+**Thank you for contributing to Magentiq AI Labs Ltd.!**
 
-*Building AI solutions for African businesses, together.* 
+*Building focused AI infrastructure for professional workflows.* 

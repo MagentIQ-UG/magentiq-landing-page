@@ -1,8 +1,9 @@
 import Header from './components/Header';
 import Hero from './components/Hero';
-import CarsaLens from './components/CarsaLens';
-import Solutions from './components/Solutions';
-import WhyChooseMagentiq from './components/WhyChooseMagentiq';
+import About from './components/About';
+import LawLensProduct from './components/LawLensProduct';
+import WhyItMatters from './components/WhyItMatters';
+import CompanyProductRelationship from './components/CompanyProductRelationship';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 
@@ -12,9 +13,10 @@ function App() {
       <Header />
       <main>
         <Hero />
-        <CarsaLens />
-        <Solutions />
-        <WhyChooseMagentiq />
+        <About />
+        <LawLensProduct />
+        <WhyItMatters />
+        <CompanyProductRelationship />
         <Contact />
       </main>
       <Footer />

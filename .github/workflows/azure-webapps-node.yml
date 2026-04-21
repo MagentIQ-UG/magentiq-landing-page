@@ -1,4 +1,4 @@
-name: Build and deploy MagentIQ Landing Page to Azure Web App
+name: Build and deploy Magentiq Landing Page to Azure Web App
 
 on:
   push:

@@ -1,106 +1,120 @@
 import React from 'react';
+import {
+  ArrowTopRightOnSquareIcon,
+  EnvelopeIcon,
+  MagnifyingGlassIcon,
+} from '@heroicons/react/24/outline';
 
 const Hero: React.FC = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-100 via-blue-50 to-blue-100 overflow-hidden">
-      {/* Animated background elements */}
-      <div className="absolute inset-0">
-        {/* Floating AI network visualization */}
-        <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-brand-blue rounded-full animate-pulse opacity-40"></div>
-        <div className="absolute top-1/3 right-1/3 w-3 h-3 bg-gray-400 rounded-full animate-bounce opacity-30"></div>
-        <div className="absolute bottom-1/4 left-1/3 w-1 h-1 bg-brand-blue rounded-full animate-ping opacity-50"></div>
-        <div className="absolute top-1/2 right-1/4 w-2 h-2 bg-blue-500 rounded-full animate-pulse opacity-40"></div>
-        <div className="absolute bottom-1/3 right-1/2 w-1 h-1 bg-gray-500 rounded-full animate-bounce opacity-20"></div>
-        
-        {/* Concentric rings */}
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-          <div className="w-96 h-96 border border-brand-blue rounded-full opacity-10 animate-pulse"></div>
-          <div className="absolute inset-8 border border-blue-400 rounded-full opacity-15 animate-ping"></div>
-          <div className="absolute inset-16 border border-blue-300 rounded-full opacity-20 animate-bounce"></div>
-        </div>
+    <section className="relative overflow-hidden bg-white pt-28">
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#eef2f7_1px,transparent_1px),linear-gradient(to_bottom,#eef2f7_1px,transparent_1px)] bg-[size:48px_48px]" />
+      <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-blue-50 to-transparent" />
 
-        {/* Data points */}
-        <div className="absolute top-20 left-10 w-4 h-4 bg-gradient-to-r from-brand-blue to-transparent rounded-full opacity-30 animate-pulse"></div>
-        <div className="absolute bottom-20 right-10 w-3 h-3 bg-gradient-to-l from-blue-500 to-transparent rounded-full opacity-40 animate-bounce"></div>
-        <div className="absolute top-40 right-20 w-2 h-2 bg-brand-blue rounded-full opacity-30 animate-ping"></div>
-      </div>
-
-      <div className="container-custom text-center relative z-10">
-        <div className="max-w-4xl mx-auto">
-          {/* Announcing badge */}
-          <div className="inline-flex items-center bg-white/80 border border-brand-blue/30 rounded-full px-6 py-2 mb-8 backdrop-blur-sm">
-            <span className="w-2 h-2 bg-brand-blue rounded-full mr-3 animate-pulse"></span>
-            <span className="text-brand-blue text-sm font-medium">🚀 Introducing Next-Gen AI Solutions</span>
+      <div className="container-custom relative z-10 pb-16 pt-12 lg:pb-24 lg:pt-20">
+        <div className="mx-auto max-w-5xl text-center">
+          <div className="mb-8 inline-flex items-center rounded-full border border-brand-blue/20 bg-white px-4 py-2 text-sm font-semibold text-brand-blue shadow-sm">
+            Company behind Law Lens Uganda
           </div>
 
-          {/* Main heading */}
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
-            <span className="text-gray-900">Intelligent </span>
-            <span className="gradient-text">Document Processing</span>
-            <br />
-            <span className="text-gray-900">for </span>
-            <span className="text-brand-blue">Tomorrow's Challenges</span>
+          <h1 className="text-5xl font-bold tracking-tight text-gray-950 md:text-7xl">
+            Magentiq AI Labs builds focused AI infrastructure for professional workflows.
           </h1>
 
-          {/* Subheading */}
-          <p className="text-xl md:text-2xl text-gray-700 mb-4 max-w-3xl mx-auto leading-relaxed">
-            MagentIQ AI Labs empowers businesses with cutting-edge artificial intelligence technologies that automate document-intensive workflows, drive innovation, and deliver transformative growth.
+          <p className="mx-auto mt-8 max-w-3xl text-xl leading-8 text-gray-700 md:text-2xl md:leading-10">
+            We are the company behind Law Lens Uganda, a legal research
+            automation and compliance monitoring platform helping institutions
+            search the law, retrieve internal knowledge, and stay ahead of risk.
           </p>
 
-          <p className="text-lg md:text-xl text-gray-600 mb-12 max-w-2xl mx-auto">
-            From our flagship product <strong className="text-brand-blue">Carsa Recruitment Lens</strong> to comprehensive AI solutions, we're building the future of intelligent document processing.
-          </p>
-
-          {/* CTA buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
-            <a 
-              href="https://www.carsalens.com" 
-              target="_blank" 
+          <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+            <a
+              href="https://lawlens.io/"
+              target="_blank"
               rel="noopener noreferrer"
-              className="btn-primary text-lg px-8 py-4 inline-flex items-center group"
+              className="btn-primary inline-flex items-center px-8 py-4 text-base"
             >
-              Experience Carsa Recruitment Lens
-              <svg className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-              </svg>
+              Explore Law Lens Uganda
+              <ArrowTopRightOnSquareIcon className="ml-2 h-5 w-5" />
             </a>
-            <a 
-              href="#carsa-lens" 
-              className="btn-secondary text-lg px-8 py-4 inline-flex items-center group"
+            <a
+              href="mailto:jothamw@magentiqlabs.com"
+              className="btn-secondary inline-flex items-center px-8 py-4 text-base"
             >
-              Learn More
-              <svg className="w-5 h-5 ml-2 group-hover:translate-y-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-              </svg>
+              Contact Us
+              <EnvelopeIcon className="ml-2 h-5 w-5" />
             </a>
           </div>
 
-          {/* Key stats */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-            <div className="bg-white/90 backdrop-blur-sm rounded-lg p-6 border border-gray-200 shadow-md">
-              <div className="text-3xl font-bold text-brand-blue mb-2">500+</div>
-              <div className="text-gray-600">Documents Processed Daily</div>
-            </div>
-            <div className="bg-white/90 backdrop-blur-sm rounded-lg p-6 border border-gray-200 shadow-md">
-              <div className="text-3xl font-bold text-brand-blue mb-2">95%</div>
-              <div className="text-gray-600">Processing Accuracy</div>
-            </div>
-            <div className="bg-white/90 backdrop-blur-sm rounded-lg p-6 border border-gray-200 shadow-md">
-              <div className="text-3xl font-bold text-brand-blue mb-2">10x</div>
-              <div className="text-gray-600">Faster Than Manual Review</div>
-            </div>
-          </div>
+          <p className="mt-8 text-sm font-medium uppercase tracking-[0.18em] text-gray-600">
+            Founded in Kampala. Building applied AI for legal, regulatory, and
+            institutional work.
+          </p>
         </div>
-      </div>
 
-      {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <div className="w-6 h-10 border-2 border-brand-blue/40 rounded-full flex justify-center">
-          <div className="w-1 h-3 bg-brand-blue rounded-full mt-2 animate-pulse"></div>
+        <div className="mx-auto mt-14 max-w-5xl rounded-lg border border-gray-200 bg-white shadow-xl">
+          <div className="border-b border-gray-200 px-5 py-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+              <div>
+                <p className="text-sm font-semibold text-gray-950">Law Lens Uganda</p>
+                <p className="text-xs text-gray-500">
+                  Legal research and compliance workspace
+                </p>
+              </div>
+              <span className="rounded-full bg-blue-50 px-3 py-1 text-xs font-semibold text-brand-blue">
+                A product of Magentiq AI Labs Ltd.
+              </span>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr_0.7fr]">
+            <div className="border-b border-gray-200 p-5 lg:border-b-0 lg:border-r">
+              <div className="flex items-center rounded-lg border border-gray-200 bg-gray-50 px-4 py-3">
+                <MagnifyingGlassIcon className="mr-3 h-5 w-5 text-brand-blue" />
+                <span className="text-sm text-gray-700">
+                  Search Ugandan law, judgments, contracts, and institutional records
+                </span>
+              </div>
+              <div className="mt-5 space-y-3">
+                <div className="rounded-lg border border-gray-200 p-4">
+                  <p className="text-sm font-semibold text-gray-950">
+                    Citation-backed legal answers
+                  </p>
+                  <p className="mt-2 text-sm leading-6 text-gray-600">
+                    Responses are designed to connect professional users back to
+                    statutes, judgments, internal records, and compliance source
+                    material.
+                  </p>
+                </div>
+                <div className="rounded-lg border border-gray-200 p-4">
+                  <p className="text-sm font-semibold text-gray-950">
+                    Monitoring for obligations and regulatory change
+                  </p>
+                  <p className="mt-2 text-sm leading-6 text-gray-600">
+                    Workflows support contract risk, renewal visibility, and
+                    compliance tracking for institutions.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-gray-50 p-5">
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gray-500">
+                Built For
+              </p>
+              <div className="mt-4 grid grid-cols-2 gap-3 text-sm font-semibold text-gray-800">
+                {['Law firms', 'Courts', 'Regulators', 'Corporate legal teams'].map((item) => (
+                  <div key={item} className="rounded-lg bg-white p-4 shadow-sm">
+                    {item}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
   );
 };
 
-export default Hero; 
+export default Hero;

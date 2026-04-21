@@ -1,6 +1,6 @@
 # 📝 Changelog
 
-All notable changes to the MagentIQ AI Labs landing page project will be documented in this file.
+All notable changes to the Magentiq AI Labs Ltd. landing page project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
@@ -12,11 +12,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - **Complete landing page** with professional design
 - **React 19 + TypeScript** frontend with Vite
 - **Express.js backend** with professional email system
-- **Contact form** with email delivery to hello@magentiqlabs.com
+- **Contact form** with email delivery to jothamw@magentiqlabs.com
 - **Auto-reply system** for contact form submissions
 - **Azure App Service** deployment configuration
 - **Microsoft 365 domain** setup (magentiqlabs.com)
-- **Professional branding** with MagentIQ colors and typography
+- **Professional branding** with Magentiq colors and typography
 - **SEO optimization** with meta tags, Open Graph, Schema.org
 - **Responsive design** with Tailwind CSS
 - **Partner logos** (Microsoft for Startups, NIIH)
@@ -31,9 +31,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### 🌐 **Landing Page Sections**
 - **Hero** - Brand introduction with animated AI network background
-- **Carsa Lens Showcase** - Interactive product demonstration with tabs
+- **Law Lens Uganda Showcase** - Product ownership and legal technology positioning
 - **Solutions** - AI capabilities across 4 service areas
-- **Why Choose MagentIQ** - Competitive advantages and metrics
+- **Why Choose Magentiq** - Focused company positioning and credibility
 - **Contact** - Professional contact form with validation
 
 ### 📊 **Performance**
@@ -72,7 +72,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ## [0.8.0] - 2025-06-23 - 🎨 **DESIGN & CONTENT**
 
 ### 🎨 **Added**
-- **Professional color scheme**: MagentIQ brand blue (#0056b3)
+- **Professional color scheme**: Magentiq brand blue (#0056b3)
 - **Inter font family**: Google Fonts integration
 - **Responsive navigation**: Mobile hamburger menu
 - **Animated backgrounds**: AI network visualization
@@ -80,13 +80,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### 📝 **Content**
 - **Company information**: Kampala-based AI lab positioning
-- **Product showcase**: Carsa Recruitment Lens features
+- **Product showcase**: Law Lens Uganda features
 - **Business metrics**: 500+ docs daily, 95% accuracy, 10x faster
-- **Contact details**: +256 750 990 718, hello@magentiqlabs.com
-- **African market focus**: "Building AI solutions for African businesses"
+- **Contact details**: +256 750 990 718, jothamw@magentiqlabs.com
+- **Company focus**: focused AI infrastructure for legal, regulatory, and institutional work
 
 ### 🖼️ **Assets**
-- **MagentIQ logo**: SVG and PNG formats
+- **Magentiq logo**: SVG and PNG formats
 - **Favicon**: Multiple sizes for browser compatibility
 - **Partner logos**: Microsoft and NIIH official branding
 - **Brand guidelines**: Comprehensive usage documentation
@@ -132,7 +132,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ## [0.5.0] - 2025-06-23 - 🧹 **OPTIMIZATION**
 
 ### 🔄 **Changed**
-- **Page flow**: Optimized for conversion (Hero → Carsa Lens → Solutions → Why Choose → Contact)
+- **Page flow**: Optimized for clarity (Hero → About → Law Lens Uganda → Why It Matters → Company/Product → Contact)
 - **Content strategy**: Removed startup-inappropriate content (fake testimonials, awards)
 - **Partner focus**: Authentic partnerships only (Microsoft, NIIH)
 - **African positioning**: Emphasized Kampala base and African market focus
@@ -149,7 +149,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### 🧩 **Components**
 - **Header**: Fixed navigation with mobile support
 - **Hero**: Landing section with animated background
-- **CarsaLens**: Product showcase with interactive tabs
+- **LawLensProduct**: Product showcase and Law Lens Uganda ownership
 - **Solutions**: AI capabilities with service breakdown
 - **WhyChooseMagentiq**: Competitive advantages
 - **Contact**: Form with validation and submission

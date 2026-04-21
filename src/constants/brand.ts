@@ -1,4 +1,4 @@
-// MagentIQ Brand Constants
+// Magentiq brand constants
 // Based on official brand guidelines
 
 export const COLORS = {

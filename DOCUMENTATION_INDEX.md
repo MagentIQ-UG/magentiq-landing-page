@@ -1,6 +1,6 @@
 # 📚 Documentation Index
 
-Complete documentation guide for the MagentIQ AI Labs landing page project. All documentation files organized by category for easy navigation.
+Complete documentation guide for the Magentiq AI Labs Ltd. landing page project. All documentation files organized by category for easy navigation.
 
 ---
 
@@ -108,7 +108,7 @@ src/
 ├── components/           # React components
 │   ├── Header.tsx       # Navigation with mobile menu
 │   ├── Hero.tsx        # Landing section with animation
-│   ├── CarsaLens.tsx   # Product showcase
+│   ├── LawLensProduct.tsx   # Product showcase
 │   ├── Solutions.tsx   # AI capabilities
 │   ├── WhyChooseMagentiq.tsx  # Competitive advantages
 │   ├── Contact.tsx     # Contact form with validation
@@ -192,16 +192,16 @@ curl -X POST http://localhost:8080/api/contact \
 ## 📞 **Support & Contact**
 
 ### **Technical Support**
-- **Email**: hello@magentiqlabs.com
+- **Email**: jothamw@magentiqlabs.com
 - **GitHub Issues**: [Repository Issues](https://github.com/MagentIQ-UG/magentiq-landing-page/issues)
 - **Documentation**: This documentation index
 
 ### **Business Information**
-- **Company**: MagentIQ AI Labs Ltd.
+- **Company**: Magentiq AI Labs Ltd.
 - **Location**: Kampala, Uganda 🇺🇬
 - **Phone**: +256 750 990 718
 - **LinkedIn**: https://www.linkedin.com/company/magentiq-labs
-- **Product**: https://carsalens.com
+- **Product**: https://lawlens.io/
 
 ---
 
@@ -263,4 +263,4 @@ curl -X POST http://localhost:8080/api/contact \
 
 **📚 Complete documentation ecosystem for production-ready deployment!**
 
-*Built with ❤️ in Kampala, Uganda by MagentIQ AI Labs* 
+*Built in Kampala, Uganda by Magentiq AI Labs Ltd.* 

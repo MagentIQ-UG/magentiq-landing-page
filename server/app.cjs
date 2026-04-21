@@ -125,8 +125,8 @@ function createEmailTemplate(data) {
     </head>
     <body>
       <div class="header">
-        <h1>🚀 New Contact Form Submission</h1>
-        <p>MagentIQ AI Labs Landing Page</p>
+        <h1>New Contact Form Submission</h1>
+        <p>Magentiq AI Labs Ltd. Landing Page</p>
         <span class="azure-badge">Azure App Service</span>
       </div>
       
@@ -175,7 +175,7 @@ function createEmailTemplate(data) {
           <ul style="margin-bottom: 0;">
             <li><strong>Respond within 24 hours</strong> (as promised on the website)</li>
             <li><strong>Schedule consultation</strong> based on inquiry type: ${data.inquiryType}</li>
-            <li><strong>Send Carsa Lens demo</strong> if relevant to their needs</li>
+            <li><strong>Share Law Lens Uganda demo</strong> if relevant to their needs</li>
             <li><strong>Add to CRM</strong> for lead tracking and follow-up</li>
             <li><strong>Consider priority level</strong> based on company size and inquiry type</li>
           </ul>
@@ -183,7 +183,7 @@ function createEmailTemplate(data) {
       </div>
       
       <div class="footer">
-        <p>This email was automatically generated from the MagentIQ AI Labs contact form.</p>
+        <p>This email was automatically generated from the Magentiq AI Labs Ltd. contact form.</p>
         <p>Server: Azure App Service | Timestamp: ${data.submissionDate}</p>
         <p>User Agent: ${data.userAgent.substring(0, 100)}${data.userAgent.length > 100 ? '...' : ''}</p>
       </div>
@@ -218,10 +218,10 @@ app.post('/api/contact', async (req, res) => {
 
     // Email configuration
     const emailOptions = {
-      from: `"MagentIQ Contact Form" <${process.env.EMAIL_USER}>`,
+      from: `"Magentiq Contact Form" <${process.env.EMAIL_USER}>`,
       to: process.env.CONTACT_EMAIL || process.env.EMAIL_USER,
       replyTo: formData.email,
-      subject: `🚀 New ${formData.inquiryType} Inquiry - ${formData.company}`,
+      subject: `New ${formData.inquiryType} inquiry - ${formData.company}`,
       html: createEmailTemplate(formData),
     };
 
@@ -232,9 +232,9 @@ app.post('/api/contact', async (req, res) => {
     // Optionally send auto-reply to user
     if (process.env.SEND_AUTO_REPLY === 'true') {
       const autoReplyOptions = {
-        from: `"MagentIQ AI Labs" <${process.env.EMAIL_USER}>`,
+        from: `"Magentiq AI Labs Ltd." <${process.env.EMAIL_USER}>`,
         to: formData.email,
-        subject: 'Thank you for contacting MagentIQ AI Labs',
+        subject: 'Thank you for contacting Magentiq AI Labs Ltd.',
         html: `
           <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden;">
             <div style="background: #0056b3; color: white; padding: 20px; text-align: center;">
@@ -243,27 +243,27 @@ app.post('/api/contact', async (req, res) => {
             </div>
             <div style="padding: 20px;">
               <p>Dear ${formData.firstName},</p>
-              <p>Thank you for your interest in MagentIQ AI Labs. We've received your inquiry regarding <strong>${formData.inquiryType}</strong> and will get back to you within 24 hours.</p>
-              <p>Our Kampala-based AI experts will review your requirements and provide you with a personalized consultation to discuss how our solutions can help transform your business.</p>
+              <p>Thank you for your interest in Magentiq AI Labs Ltd. We've received your inquiry regarding <strong>${formData.inquiryType}</strong> and will get back to you within 24 hours.</p>
+              <p>Our Kampala-based team will review your message and follow up about Law Lens Uganda, partnerships, startup programs, or infrastructure support where relevant.</p>
               <div style="background: #e3f2fd; padding: 15px; border-radius: 6px; margin: 20px 0;">
                 <h3 style="color: #0056b3; margin-top: 0;">What happens next?</h3>
                 <ul style="margin-bottom: 0;">
                   <li>We'll review your inquiry within 2 hours</li>
-                  <li>Our AI expert will contact you within 24 hours</li>
-                  <li>We'll schedule a personalized consultation</li>
-                  <li>You'll receive a tailored solution proposal</li>
+                  <li>Our team will contact you within 24 hours</li>
+                  <li>We'll schedule a focused follow-up if useful</li>
+                  <li>You'll receive the relevant Law Lens Uganda or company information</li>
                 </ul>
               </div>
               <p>If you have any urgent questions, feel free to contact us directly at <a href="tel:+256750990718">+256 750 990 718</a>.</p>
-              <p>Best regards,<br><strong>The MagentIQ Team</strong></p>
+              <p>Best regards,<br><strong>The Magentiq AI Labs Ltd. Team</strong></p>
             </div>
             <div style="background: #f8f9fa; padding: 15px; text-align: center; font-size: 12px; color: #666;">
-              <p style="margin: 0;"><strong>MagentIQ AI Labs Ltd.</strong></p>
+              <p style="margin: 0;"><strong>Magentiq AI Labs Ltd.</strong></p>
               <p style="margin: 5px 0;">National ICT Innovation Hub, Plot 19-21 Port Bell Road, Kampala, Uganda</p>
-              <p style="margin: 5px 0;">Email: hello@magentiqlabs.com | Phone: +256 750 990 718</p>
+              <p style="margin: 5px 0;">Email: jothamw@magentiqlabs.com | Phone: +256 750 990 718</p>
               <p style="margin: 5px 0 0 0;">
                 <a href="https://www.linkedin.com/company/magentiq-labs" style="color: #0056b3; text-decoration: none;">LinkedIn</a> | 
-                <a href="https://carsalens.com" style="color: #0056b3; text-decoration: none;">Carsa Lens</a>
+                <a href="https://lawlens.io/" style="color: #0056b3; text-decoration: none;">Law Lens Uganda</a>
               </p>
             </div>
           </div>
@@ -290,7 +290,7 @@ app.post('/api/contact', async (req, res) => {
     
     if (error instanceof Error) {
       if (error.message.includes('Email configuration')) {
-        errorMessage = 'Email service is temporarily unavailable. Please contact us directly at hello@magentiqlabs.com';
+        errorMessage = 'Email service is temporarily unavailable. Please contact us directly at jothamw@magentiqlabs.com';
       } else if (error.message.includes('Invalid login')) {
         errorMessage = 'Email service authentication failed. Please contact us directly.';
       } else if (error.message.includes('Network')) {
@@ -337,7 +337,7 @@ app.use('/api/*', (req, res) => {
 
 // Start server
 app.listen(PORT, () => {
-  console.log(`🚀 MagentIQ Server running on port ${PORT}`);
+  console.log(`Magentiq server running on port ${PORT}`);
   console.log(`Environment: ${process.env.NODE_ENV || 'development'}`);
   console.log(`Health check: http://localhost:${PORT}/api/health`);
   
